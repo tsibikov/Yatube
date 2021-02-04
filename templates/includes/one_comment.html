@@ -1,0 +1,24 @@
+
+
+ 
+<div class="card mb-3 mt-1 shadow-sm">
+   <div class="card-body">
+      <p class="card-text">
+         <a href="{% url 'profile' item.author.username %}"><strong class="d-block text-gray-dark">@{{item.author.username}}</strong></a>
+      </p>
+      {{ item.text|linebreaksbr }}
+      <p>
+      <div class="d-flex justify-content-between align-items-center">
+         <h6>
+            <small class="text-muted">
+            {% if user == item.author %}
+                     <a class="p-2 text-dark" href="{% url 'edit_comment' post.author.username post.id item.id %}">Редактировать</a>
+                     <a class="p-2 text-dark" href="{% url 'delete_comment' post.author.username post.id item.id %}">Удалить</a>
+               {% endif %}
+            
+            {{ item.created|date:"d M Y" }}   {{ item.created|time:"H:i" }}</small>
+         </h6>
+      </div>
+   </div>
+</div>
+</p>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Просмотр записи {{post.author.username}}{% endblock %}
+{% block header %} Просмотр записи {{post.author.username}}{% endblock %}
+{% block content %}
+<main role="main" class="container">
+<div class="row">
+    {% include 'includes/userprofile.html' %}
+    <div class="col-md-9">
+        {% include 'includes/post_item.html' %}
+        {% include 'includes/comments.html' with comment=comment %}
+        {% for item in post_com %}
+            <div class="media mb-4">
+            <div class="media-body">
+            <h6 class="mt-0">
+            {% include "includes/one_comment.html" %}
+            </h6>
+            </div>
+            </div>
+        {% endfor %} 
+    </div>
+</div>
+{% endblock %}
